@@ -123,4 +123,3 @@ window.addEventListener('beforeunload', function () {
     sessionStorage.setItem(sessionUserAttemptsKey, 0);
     sessionUserAttemptsField.innerText = sessionStorage.getItem(sessionUserAttemptsKey);
 });
-

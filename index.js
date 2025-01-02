@@ -35,25 +35,28 @@ const sessionUserIsPlayingKey = 'SESSION_USER_IS_PLAYING';
 const localTotalVictoryKey = 'LOCAL_TOTAL_VICTORIES_PLAYED';
 const localMaximumAttemptsKey = 'LOCAL_MAXIMUM_ATTEMPTS';
 
-window.addEventListener('laod', function () {
-    if (typeof (storage) !== 'undefined') {
-        // inisialisasi samua item web storage yang digunakan jika belum ada
-        if (sessionStorage.getItem(sessionAnswerKey) === null) {
-            sessionStorage.setItem(sessionAnswerKey, '');
-        }
-        if (sessionStorage.getItem(sessionUserAttemptsKey) === null) {
-            sessionStorage.setItem(sessionUserAttemptsKey, 0);
-        }
-        if (sessionStorage.getItem(sessionUserIsPlayingKey) === null) {
-            sessionStorage.setItem(sessionUserIsPlayingKey, false);
-        }
-        if (localStorage.getItem(localTotalVictoryKey) === null) {
-            localStorage.setItem(localTotalVictoryKey, 0);
-        }
-        if (localStorage.getItem(localMaximumAttemptsKey) === null) {
-            localStorage.setItem(localMaximumAttemptsKey, 0);
-        }
+window.addEventListener('load', function () {
+    if (typeof (Storage) !== 'undefined') {
+      // inisialisasi semua item web storage yang akan digunakan jika belum ada
+      if (sessionStorage.getItem(sessionAnswerKey) === null) {
+        sessionStorage.setItem(sessionAnswerKey, '');
+      }
+      if (sessionStorage.getItem(sessionUserAttemptsKey) === null) {
+        sessionStorage.setItem(sessionUserAttemptsKey, 0);
+      }
+      if (localStorage.getItem(localTotalVictoryKey) === null) {
+        localStorage.setItem(localTotalVictoryKey, 0);
+      }
+      if (localStorage.getItem(localMaximumAttemptsKey) === null) {
+        localStorage.setItem(localMaximumAttemptsKey, 0);
+      }
     } else {
-        alert('Browser yang Anda gunakan tidak mendukung Web Storage');
+      alert('Browser yang Anda gunakan tidak mendukung Web Storage');
     }
+
+    
+    //inisialisasi semua nilai field pada dokumen yang menggunakan nilai dari web storage
+    sessionUserAttemptsField.innerText = sessionStorage.getItem(sessionUserAttemptsKey);
+    localTotalVictoryField.innerText = localStorage.getItem(localTotalVictoryKey);
+    localMaximumAttemptField.innerText = localStorage.getItem(localMaximumAttemptsKey);
 });
